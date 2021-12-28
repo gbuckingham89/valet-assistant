@@ -8,6 +8,8 @@ A Laravel package for using [Laravel Valet](https://laravel.com/docs/valet) with
 
 _This package will only fully function when used on a computer that has Laravel Valet installed._
 
+**Looking for a UI for Laravel Valet? Take a look at [gbuckingham89/valet-launchpad](https://github.com/gbuckingham89/valet-launchpad).**
+
 ## Installation
 
 You can install the package via composer:
