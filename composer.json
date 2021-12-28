@@ -1,0 +1,57 @@
+{
+    "name": "gbuckingham89/valet-assistant",
+    "type": "library",
+    "description": "A Laravel package for using Laravel Valet within another Laravel application - e.g. getting a list of sites served by Valet.",
+    "keywords": ["Laravel Valet", "Laravel Valet API", "Valet", "Valet API"],
+    "homepage": "https://github.com/gbuckingham89/valet-assistant",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "George Buckingham",
+            "email": "george@georgebuckingham.com",
+            "homepage": "https://www.georgebuckingham.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/gbuckingham89/valet-assistant/issues",
+        "source": "https://github.com/gbuckingham89/valet-assistant"
+    },
+    "require": {
+        "php": "^7.4|^8.0",
+        "ext-json": "*",
+        "laravel/framework": "^8.0",
+        "spatie/enum": "^3.11"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Gbuckingham89\\ValetAssistant\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Gbuckingham89\\ValetAssistant\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Gbuckingham89\\ValetAssistant\\ValetAssistantServiceProvider"
+            ],
+            "aliases": {
+                "ValetAssistant": "Gbuckingham89\\ValetAssistant\\Facades\\ValetAssistant"
+            }
+        }
+    },
+    "require-dev": {
+        "nunomaduro/larastan": "^1.0",
+        "orchestra/testbench": "^6.23",
+        "phpunit/phpunit": "^9.5",
+        "mockery/mockery": "^1.4"
+    }
+}
