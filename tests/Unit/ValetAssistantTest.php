@@ -27,7 +27,7 @@ class ValetAssistantTest extends TestCase
                 ]))
             ]));
 
-        $valetAssistant = new ValetAssistant($commander, $projectRepository, '/fake/bin/dir');
+        $valetAssistant = new ValetAssistant($commander, $projectRepository);
 
         $projects = $valetAssistant->projects();
 
@@ -46,7 +46,7 @@ class ValetAssistantTest extends TestCase
 
         $projectRepository = \Mockery::mock(Repository::class);
 
-        $valetAssistant = new ValetAssistant($commander, $projectRepository, '/fake/bin/dir');
+        $valetAssistant = new ValetAssistant($commander, $projectRepository);
 
         $this->assertTrue($valetAssistant->isInstalled());
     }

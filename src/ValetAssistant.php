@@ -26,17 +26,11 @@ class ValetAssistant
     /**
      * @param \Gbuckingham89\ValetAssistant\Commander\Commander $commander
      * @param \Gbuckingham89\ValetAssistant\Entities\Repositories\Projects\Repository $projectsRepository
-     * @param string|null $path
      */
-    public function __construct(Commander $commander, Repository $projectsRepository, ?string $path = null)
+    public function __construct(Commander $commander, Repository $projectsRepository)
     {
         $this->commander = $commander;
         $this->projectsRepository = $projectsRepository;
-        $this->path = $path;
-
-        if (!empty($this->path)) {
-            putenv('PATH=' . $this->path);
-        }
     }
 
     /**

@@ -28,7 +28,10 @@ class ValetAssistantServiceProvider extends ServiceProvider
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'valet-assistant');
 
-        $this->app->bind(Commander::class, ExecCommander::class);
+        $this->app->singleton(Commander::class, function () {
+            return new ExecCommander(strval(config('valet-assistant.env_path')));
+        });
+
         $this->app->bind(Repository::class, strval(config('valet-assistant.projects_repository_class')));
 
         $this->app->singleton(ValetAssistant::class, function () {
@@ -39,9 +42,7 @@ class ValetAssistantServiceProvider extends ServiceProvider
             /** @var \Gbuckingham89\ValetAssistant\Entities\Repositories\Projects\Repository $projectsRepo */
             $projectsRepo = $this->app->make(Repository::class);
 
-            $envPath = strval(config('valet-assistant.env_path'));
-
-            return new ValetAssistant($commander, $projectsRepo, !empty($envPath) ? $envPath : null);
+            return new ValetAssistant($commander, $projectsRepo);
         });
     }
 }

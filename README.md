@@ -6,7 +6,7 @@
 
 A Laravel package for using [Laravel Valet](https://laravel.com/docs/valet) within another Laravel application - e.g. getting a list of sites served by Valet.
 
-_This package will only fully function when used on a computer that has Laravel Valet installed._
+_This package will only be fully functional when used on a computer that has Laravel Valet installed._
 
 **Looking for a UI for Laravel Valet? Take a look at [gbuckingham89/valet-launchpad](https://github.com/gbuckingham89/valet-launchpad).**
 
@@ -53,18 +53,20 @@ This simply returns a boolean value indicating if Valet is installed, or not.
 
 ### Valet not installed
 
-If you see errors about Valet not being installed (but you're sure that it is, and you see output by running `which valet` from your local terminal) it's likely that the user running your PHP script doesn't know where the Valet binary is located.
+If you see errors about Valet not being installed (but you're sure that it is, and you see output by running `which valet` from your local terminal) it's likely that the user running your PHP script doesn't know where the Valet binary is located, or doesn't have permission to run it.
 
 There are two ways to resolve this;
 
-1. Add `/Users/[local-username]/.composer/vendor/bin` to the PATH file for the user running the PHP script _(remember to insert the username that Valet is installed under)_
-2. Find the value of your PATH by running `echo $PATH` from your local Terminal. Ensure you have published the config file (see above), then add an entry to your `.env` file with the key `VALET_ASSISTANT_ENV_PATH` and the value of your local PATH. This PATH value will then be used by your PHP script.
+1. Find the value of the PATH environment variable for your shell by running `echo $PATH` from your local Terminal. Ensure you have published the config file (see above), then add an entry to your `.env` file with the key `VALET_ASSISTANT_ENV_PATH` and the value of your local PATH. This PATH value will then be used whenever this package executes a shell command. It is NOT used by code outside this package.
+2. Add `/Users/[local-username]/.composer/vendor/bin` to the PATH environment for the user running the PHP script _(remember to insert the username that Valet is installed under)_
 
-_**Please do your own research and consider any security implications of giving PHP access to additional PATH directories.**_
+_**Please do your own research and consider any security implications of giving PHP access to additional directories through the PATH environment.**_
 
 ## Testing
 
 You can run the test suite by calling `./vendor/bin/phpunit` or `composer test`.
+
+_You may see the following error in your terminal output when running the test suite: `..sh: which: command not found`. This is a [known issue](https://github.com/gbuckingham89/valet-assistant/blob/master/tests/Unit/Commander/ExecCommanderTest.php#L38) and a PR to resolve this would certainly be welcomed!_
 
 ## Changelog
 
